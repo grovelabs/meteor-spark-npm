@@ -26,7 +26,6 @@ Meteor.startup( function() {
 
 ````
 Meteor.startup( function() {
-  // Get your accessToken from your account, this is fake
   Spark.login({username: 'username@gmail.com', password: '12345'}); 
 });
 ````
