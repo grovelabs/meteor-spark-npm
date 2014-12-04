@@ -5,6 +5,10 @@ Package.describe({
   git: 'https://github.com/grovelabs/meteor-spark-npm.git'
 });
 
+Npm.depends({
+  "spark" : "0.2.3"
+});
+
 Package.onUse(function(api) {
   api.versionsFrom('1.0');
   api.addFiles('grove:spark-npm.js');
