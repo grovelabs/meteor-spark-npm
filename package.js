@@ -1,7 +1,7 @@
 Package.describe({
   name: 'grove:spark',
   summary: 'Spark\'s npm package',
-  version: '1.1.0',
+  version: '1.1.1',
   git: 'https://github.com/grovelabs/meteor-spark-npm.git'
 });
 
@@ -10,8 +10,8 @@ Npm.depends({
 });
 
 Package.onUse(function(api) {
-  api.versionsFrom('1.0');
-  api.addFiles('grove:spark-npm.js');
+  api.addFiles('grove:spark-npm.js', 'server');
+  api.export('Spark', 'server');
 });
 
 Package.onTest(function(api) {
