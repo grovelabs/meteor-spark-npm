@@ -1,5 +1,5 @@
 # Spark
-This Meteor package is a wrapper for [Spark's Javascript library](https://github.com/spark/sparkjs), which is a wrapper for interacting with the Spark REST API.
+This Meteor package is a wrapper for the [Spark npm package](https://www.npmjs.org/package/spark), which is a Javascript library for interacting with the Spark HTTP API. Since this is a wrapper for the npm package it's strictly for use on the server. If you're interested in using Spark on the client, you want to use [grove:spark.js](https://github.com/grovelabs/meteor-spark.js)
 
 Spark is a platform for building web-connected hardware. Read more about it at https://www.spark.io/
 
