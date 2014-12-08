@@ -1,1 +1,0 @@
-Spark = Npm.require('spark');
