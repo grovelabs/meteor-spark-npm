@@ -6,7 +6,7 @@ Package.describe({
 });
 
 Package.onUse(function(api) {
-  api.addFiles('spark.min.js', 'server');
+  api.addFiles('spark.min.js');
   api.export('spark');
 });
 
