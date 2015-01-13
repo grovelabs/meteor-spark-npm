@@ -8,10 +8,10 @@ Spark is a platform for building web-connected hardware. Read more about it at h
 ````
 $ meteor add grove:spark
 ````
-This will expose the `spark` variable to global scope on the server and client
+This will expose the `Spark` variable to global scope on the server and client
 
 ## Usage
-Before using the library, you need to login with your Spark Cloud credentials. This is as described [in their docs](http://docs.spark.io/javascript/#getting-started-logging-in). I recommend putting the login call into a `Meteor.startup` function. By doing it on startup you don't have to use a promise, i.e. `spark.login().then(...`. Alternatively, you can set up a handler with `spark.on('login', function( error, body) {...})`
+Before using the library, you need to login with your Spark Cloud credentials. This is as described [in their docs](http://docs.spark.io/javascript/#getting-started-logging-in). I recommend putting the login call into a `Meteor.startup` function. By doing it on startup you don't have to use a promise, i.e. `Spark.login().then(...`. Alternatively, you can set up a handler with `Spark.on('login', function( error, body) {...})`
 
 ### Logging in with an access token
 
