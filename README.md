@@ -30,4 +30,4 @@ Meteor.startup( function() {
 });
 ````
 
-Then go to it! Read more about what you can do in the [docs](http://docs.spark.io/javascript)
+Then go to it! Read more about what you can do in the [docs](http://docs.particle.io/core/javascript/)
