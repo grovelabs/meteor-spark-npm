@@ -1,33 +1,44 @@
-# Spark
-This Meteor package is a wrapper for the [Spark npm package](https://www.npmjs.org/package/spark), which is a Javascript library for interacting with the Spark HTTP API. Since this is a wrapper for the npm package it's strictly for use on the server. If you're interested in using Spark on the client, you want to use [grove:spark.js](https://github.com/grovelabs/meteor-spark.js)
+# Deprecated!
+This package has been deprecated in favor of using a local package or [`meteorhacks:npm`](https://github.com/meteorhacks/npm) with the [official Spark npm package](https://www.npmjs.com/package/spark). Here's how you would do it with a local package in your application:
 
-Spark is a platform for building web-connected hardware. Read more about it at https://www.spark.io/
+```javascript
+// packages/npm-deps/package.js
+Package.onUse(function(api) {
+  Npm.depends({
+    spark: '1.0.0',
+  });
+  
+  api.addFiles([
+    'npm.js',
+  ], 'server');
 
-
-## Installation
-````
-$ meteor add grove:spark
-````
-This will expose the `Spark` variable to global scope on the server and client
-
-## Usage
-Before using the library, you need to login with your Spark Cloud credentials. This is as described [in their docs](http://docs.spark.io/javascript/#getting-started-logging-in). I recommend putting the login call into a `Meteor.startup` function. By doing it on startup you don't have to use a promise, i.e. `Spark.login().then(...`. Alternatively, you can set up a handler with `Spark.on('login', function( error, body) {...})`
-
-### Logging in with an access token
-
-````
-Meteor.startup( function() {
-  // Get your accessToken from your account, this is fake
-  Spark.login({accessToken: 'ljewtlksdfljk23423klsdlksd'}); 
+  api.export([
+    'Spark',
+  ], 'server');
 });
-````
 
-### Logging in with your email and password
+```
 
-````
-Meteor.startup( function() {
-  Spark.login({username: 'username@gmail.com', password: '12345'}); 
+```js
+// package/npm-deps/npm.js
+Spark = Npm.require('spark');
+```
+
+```javascript
+// server/main.js
+Meteor.startup(function(){
+  Spark.login({
+    username: process.env.SPARK_USERNAME,
+    password: process.env.SPARK_PASSWORD,
+  })
+  .then( function(token) {
+    console.log('Logged into Spark:', token);
+  })
+  .catch( function(err) {
+    console.error('Login to Spark failed:', err);
+  });
 });
-````
 
-Then go to it! Read more about what you can do in the [docs](http://docs.particle.io/core/javascript/)
+```
+
+Note that if you want to use this on the client, you'll need to provide the client with login information. Do so at your own risk, or figure out how to use access tokens.
